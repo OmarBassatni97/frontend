@@ -11,7 +11,7 @@ const TableHeader = () => {
                 height={17}
                 alt='vector'
             />
-            <div className='border-b border-[#C0E3E5] flex gap-1 w-full'>
+            <div className='border-b border-[#C0E3E5] flex w-full'>
                 <TableHeaderTab name='all contacts' />
                 <TableHeaderTab name='my contacts' />
                 <TableHeaderTab name='custom view 1' />
