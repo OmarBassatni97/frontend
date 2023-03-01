@@ -13,12 +13,12 @@ const Navbar = () => {
                         alt='logo'
                     />
                     <ul className='flex'>
-                        <li className='uppercase px-2'>companies</li>
-                        <li className='uppercase px-2'>contacts</li>
-                        <li className='uppercase px-2'>deals</li>
-                        <li className='uppercase px-2'>parent co</li>
-                        <li className='uppercase px-2'>prospects</li>
-                        <li className='uppercase px-2'>projects</li>
+                        <li className='uppercase px-2 flex gap-1'>companies <Image src='/Assets/Vector 55.svg' height={4} width={6} alt='vector' /></li>
+                        <li className='uppercase px-2 flex gap-1'>contacts <Image src='/Assets/Vector 55.svg' height={4} width={6} alt='vector' /></li>
+                        <li className='uppercase px-2 flex gap-1'>deals <Image src='/Assets/Vector 55.svg' height={4} width={6} alt='vector' /></li>
+                        <li className='uppercase px-2 flex gap-1'>parent co <Image src='/Assets/Vector 55.svg' height={4} width={6} alt='vector' /></li>
+                        <li className='uppercase px-2 flex gap-1'>prospects <Image src='/Assets/Vector 55.svg' height={4} width={6} alt='vector' /></li>
+                        <li className='uppercase px-2 flex gap-1'>projects <Image src='/Assets/Vector 55.svg' height={4} width={6} alt='vector' /></li>
                     </ul>
                 </div>
                 <div className='flex items-center gap-4'>
@@ -42,14 +42,14 @@ const Navbar = () => {
                     />
                     <Image
                         src='/Assets/Image 3.svg'
-                        width={24}
-                        height={24}
+                        width={48}
+                        height={48}
                         alt='bell'
                     />
                     <Image
                         src='/Assets/Group 3.svg'
-                        width={24}
-                        height={24}
+                        width={53}
+                        height={46}
                         alt='bell'
                     />
                 </div>
