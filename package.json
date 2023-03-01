@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@dnd-kit/core": "^6.0.8",
     "@headlessui/react": "^1.4.2",
     "axios": "^0.21.1",
     "next": "^13.0.3",
