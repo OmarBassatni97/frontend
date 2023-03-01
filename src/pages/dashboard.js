@@ -1,6 +1,6 @@
-import AppLayout from '@/components/Layouts/AppLayout'
 import Navbar from '@/components/Layouts/Navbar'
 import PageHeader from '@/components/PageHeader'
+import Table from '@/components/Table'
 import Head from 'next/head'
 
 const Dashboard = () => {
@@ -11,6 +11,7 @@ const Dashboard = () => {
             </Head>
             <Navbar />
             <PageHeader />
+            <Table />
         </>
 
 
