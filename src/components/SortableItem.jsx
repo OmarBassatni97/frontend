@@ -17,8 +17,16 @@ export function SortableItem(props) {
     };
 
     return (
-            <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
-                <span className='uppercase border border-gray-100 p-2 bg-[#C0E3E5]'>{props.id}</span>
-            </div>
+        <div className='flex flex-col' ref={setNodeRef} style={style} {...attributes} {...listeners}>
+            <span className='uppercase border border-gray-100 p-2 bg-[#C0E3E5]'>{props.id.header}</span>
+           
+           <div className='flex flex-col'>
+            {props.id.data.map(item => (
+                <span className='border border-gray-100 p-2'>{item}</span>
+            ))}
+           </div>
+         
+            
+        </div>
     );
 }

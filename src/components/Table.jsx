@@ -27,6 +27,7 @@ const Table = () => {
             coordinateGetter: sortableKeyboardCoordinates,
         })
     );
+   
     return (
         <div className='max-w-[1440px] mx-auto mt-4'>
             <TableHeader />
@@ -41,7 +42,7 @@ const Table = () => {
                     strategy={horizontalListSortingStrategy}
                 >
                     <div className='flex mt-7'>
-                        {items.map(id => <SortableItem key={id} id={id} />)}
+                        {items.map((item, index) => <SortableItem key={index} id={item} />)}
                     </div>
 
                 </SortableContext>
