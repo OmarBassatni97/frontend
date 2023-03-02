@@ -1,0 +1,1 @@
+export const columns = ['full name','first name','last name','company name', 'account manager', 'industry', 'birthday', 'title/ role', 'email', 'location']
