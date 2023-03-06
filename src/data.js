@@ -76,7 +76,7 @@ export const TabsProvider = props => {
         },
         {
             label: 'Full name',
-            field: 'full',
+            field: 'full_name',
             id: 2,
             visible: true,
             render: {

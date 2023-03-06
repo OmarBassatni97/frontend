@@ -27,7 +27,7 @@ export function SortableItem({ item }) {
         setMinWidth(`${width + 80}px`)
     }, [])
     return (
-        <th className='uppercase border border-gray-100 p-2 bg-[#C0E3E5] cursor-grab ' ref={setNodeRef} style={style}>
+        <th className='uppercase border border-gray-100 p-2 bg-[#C0E3E5] ' ref={setNodeRef} style={style}>
             <button
                 {...listeners}
                 {...attributes}

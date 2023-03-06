@@ -61,19 +61,19 @@ const SortableTableCol = ({ sortBy, type }) => {
         }
     }, [tabsContext.sortBy])
     return (
-        <div className="sortable-tabel-col" onClick={handleSort}>
+        <div className="sortable-tabel-col cursor-pointer" onClick={handleSort}>
             <Arrow
                 className={`rotate-180 mb-1 ${tabsContext.sortBy.by === 1 &&
-                        tabsContext.sortBy.col === sortBy
-                        ? 'opacity-0'
-                        : ''
+                    tabsContext.sortBy.col === sortBy
+                    ? 'opacity-0'
+                    : ''
                     }`}
             />
             <Arrow
                 className={`${tabsContext.sortBy.by === 2 &&
-                        tabsContext.sortBy.col === sortBy
-                        ? 'opacity-0'
-                        : ''
+                    tabsContext.sortBy.col === sortBy
+                    ? 'opacity-0'
+                    : ''
                     }`}
             />
         </div>
