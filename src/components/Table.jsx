@@ -21,7 +21,7 @@ const Table = () => {
                         <tr>
                             {columns.filter(col => col.visible)
                                 .map((col, index) => (
-                                    <td>
+                                    <td key={index}>
                                         {_.get(_item, col.render.label, '')}
                                     </td>
                                 ))}
