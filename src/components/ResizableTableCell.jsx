@@ -3,8 +3,8 @@ import { useContext, useState } from 'react'
 import { TabsStore } from '@/data'
 import { setWith } from 'lodash'
 
-const ResizableTableCell = ({ children, id, minWidth }) => {
-    const { columns, setColumns } = useContext(TabsStore)
+const ResizableTableCell = ({ children, minWidth }) => {
+   
     const [width, setWidth] = useState(200)
     return (
         <Resizable

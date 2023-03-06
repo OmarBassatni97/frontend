@@ -3,6 +3,7 @@ import { createContext, useState, useEffect } from 'react'
 export const TabsStore = createContext(null)
 
 export const TabsProvider = props => {
+    const [sortBy, setSortBy] = useState({ col: '', by: 0 })
     const [items, setItems] = useState([
         {
             id: 1,
@@ -16,9 +17,9 @@ export const TabsProvider = props => {
         },
         {
             id: 2,
-            full_name: 'Dusan Tomanovic',
-            first_name: 'Dusan',
-            last_name: 'Tomanovic',
+            full_name: 'Omar Bassatni',
+            first_name: 'Omar',
+            last_name: 'Bassatni',
             company: 'Klynn',
             cm_team: 'Mais Ramadan',
             vip: 'NO'
@@ -27,9 +28,9 @@ export const TabsProvider = props => {
 
         {
             id: 3,
-            full_name: 'Dusan Tomanovic',
-            first_name: 'Dusan',
-            last_name: 'Tomanovic',
+            full_name: 'Wissam Nseir',
+            first_name: 'Wissam',
+            last_name: 'Nseir',
             company: 'Klynn',
             cm_team: 'Mais Ramadan',
             vip: 'NO'
@@ -150,7 +151,7 @@ export const TabsProvider = props => {
 
 
     return (
-        <TabsStore.Provider value={{ items, setItems, columns, setColumns }}>{props.children}</TabsStore.Provider>
+        <TabsStore.Provider value={{ items, setItems, columns, setColumns, sortBy, setSortBy }}>{props.children}</TabsStore.Provider>
     )
 }
 

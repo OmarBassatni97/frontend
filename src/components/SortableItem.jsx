@@ -3,6 +3,7 @@ import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import ResizableTableCell from './ResizableTableCell';
 import calculateSize from 'calculate-size'
+import SortableTableCol from './SortableTableCol';
 
 export function SortableItem({ item }) {
     const [minWidth, setMinWidth] = useState()
@@ -45,10 +46,12 @@ export function SortableItem({ item }) {
                     <circle cx="5" cy="9" r="1" fill="#322625" />
                 </svg>
             </button>
-            <ResizableTableCell id={item.id} minWidth={minWidth}>
+            <ResizableTableCell  minWidth={minWidth}>
                 {item.label}
             </ResizableTableCell>
-
+            {item.field ? (
+                <SortableTableCol sortBy={item.field} type={item.type} />
+            ) : null}
         </th>
     );
 }
