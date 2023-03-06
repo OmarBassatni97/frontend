@@ -38,9 +38,9 @@ export const TabsProvider = props => {
         },
         {
             id: 4,
-            full_name: 'Dusan Tomanovic',
-            first_name: 'Dusan',
-            last_name: 'Tomanovic',
+            full_name: 'Tiffany Koh',
+            first_name: 'Tiffany',
+            last_name: 'Koh',
             company: 'Klynn',
             cm_team: 'Mais Ramadan',
             vip: 'NO'
