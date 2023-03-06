@@ -1,66 +1,40 @@
-import React, { useState } from 'react';
-import {
-    DndContext,
-    closestCenter,
-    KeyboardSensor,
-    PointerSensor,
-    useSensor,
-    useSensors,
-} from '@dnd-kit/core';
-import {
-    arrayMove,
-    SortableContext,
-    sortableKeyboardCoordinates,
-    horizontalListSortingStrategy,
-} from '@dnd-kit/sortable';
-
-import { SortableItem } from './SortableItem';
-import { columns } from '../data'
+import React, { useContext, useState } from 'react';
+import { get } from 'lodash'
 import TableFilters from './TableFilters'
 import TableHeader from './TableHeader'
+import DraggableHeaders from './DraggableHeaders';
+import { TabsStore } from '@/data';
 
 const Table = () => {
-    const [items, setItems] = useState(columns);
-    const sensors = useSensors(
-        useSensor(PointerSensor),
-        useSensor(KeyboardSensor, {
-            coordinateGetter: sortableKeyboardCoordinates,
-        })
-    );
-   
+
+    const { items, columns, setColumns } = useContext(TabsStore)
     return (
         <div className='max-w-[1440px] mx-auto mt-4'>
             <TableHeader />
             <TableFilters />
-            <DndContext
-                sensors={sensors}
-                collisionDetection={closestCenter}
-                onDragEnd={handleDragEnd}
-            >
-                <SortableContext
-                    items={items}
-                    strategy={horizontalListSortingStrategy}
-                >
-                    <div className='flex mt-7'>
-                        {items.map((item, index) => <SortableItem key={index} id={item} />)}
-                    </div>
+            <table className='w-full z'>
+                <thead>
+                    <DraggableHeaders />
+                </thead>
+                <tbody>
+                    {items.map(_item => (
+                        <tr>
+                            {columns.filter(col => col.visible)
+                                .map((col, index) => (
+                                    <td>
+                                        {_.get(_item, col.render.label, '')}
+                                    </td>
+                                ))}
+                        </tr>
+                    ))}
 
-                </SortableContext>
-            </DndContext>
+                </tbody>
+            </table>
+
+
         </div>
     )
-    function handleDragEnd(event) {
-        const { active, over } = event;
 
-        if (active.id !== over.id) {
-            setItems((items) => {
-                const oldIndex = items.indexOf(active.id);
-                const newIndex = items.indexOf(over.id);
-
-                return arrayMove(items, oldIndex, newIndex);
-            });
-        }
-    }
 }
 
 export default Table

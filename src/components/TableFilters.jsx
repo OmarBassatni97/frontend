@@ -3,7 +3,7 @@ import React from 'react'
 
 const TableFilters = () => {
     return (
-        <div className='flex items-center justify-between mt-4 gap-3'>
+        <div className='flex items-center justify-between  gap-3 py-8'>
             <div className='flex gap-3'>
                 <span className='flex gap-1'>50 <Image src='/Assets/Vector 55.svg' height={6} width={6} alt='vector' /> Entries</span>
                 <div className='border-x px-3'>
