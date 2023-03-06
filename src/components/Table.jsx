@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { get } from 'lodash'
+import _ from 'lodash'
 import TableFilters from './TableFilters'
 import TableHeader from './TableHeader'
 import DraggableHeaders from './DraggableHeaders';
@@ -21,7 +22,7 @@ const Table = () => {
                         <tr>
                             {columns.filter(col => col.visible)
                                 .map((col, index) => (
-                                    <td key={index}>
+                                    <td key={index} className='text-center border-2 border-gray-100 p-2'>
                                         {_.get(_item, col.render.label, '')}
                                     </td>
                                 ))}

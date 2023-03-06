@@ -9,6 +9,9 @@ export const TabsProvider = props => {
             full_name: 'Dusan Tomanovic',
             first_name: 'Dusan',
             last_name: 'Tomanovic',
+            company: 'Klynn',
+            cm_team: 'Mais Ramadan',
+            vip: 'NO'
 
         },
         {
@@ -16,6 +19,9 @@ export const TabsProvider = props => {
             full_name: 'Dusan Tomanovic',
             first_name: 'Dusan',
             last_name: 'Tomanovic',
+            company: 'Klynn',
+            cm_team: 'Mais Ramadan',
+            vip: 'NO'
 
         },
 
@@ -24,8 +30,32 @@ export const TabsProvider = props => {
             full_name: 'Dusan Tomanovic',
             first_name: 'Dusan',
             last_name: 'Tomanovic',
+            company: 'Klynn',
+            cm_team: 'Mais Ramadan',
+            vip: 'NO'
 
         },
+        {
+            id: 4,
+            full_name: 'Dusan Tomanovic',
+            first_name: 'Dusan',
+            last_name: 'Tomanovic',
+            company: 'Klynn',
+            cm_team: 'Mais Ramadan',
+            vip: 'NO'
+
+        },
+        {
+            id: 5,
+            full_name: 'Dusan Tomanovic',
+            first_name: 'Dusan',
+            last_name: 'Tomanovic',
+            company: 'Klynn',
+            cm_team: 'Mais Ramadan',
+            vip: 'NO'
+
+        },
+
 
 
     ])
@@ -77,6 +107,42 @@ export const TabsProvider = props => {
                 href: '/deals/',
                 hrefParam: 'deal.id',
                 label: 'last_name',
+            },
+        },
+        {
+            label: 'Company',
+            field: 'company',
+            id: 5,
+            visible: true,
+            render: {
+                type: 'link',
+                href: '/companies/',
+                hrefParam: 'deal.company.id',
+                label: 'company',
+            },
+        },
+        {
+            label: 'cm team',
+            field: 'cm_team',
+            id: 6,
+            visible: true,
+            render: {
+                type: 'link',
+                href: '/companies/',
+                hrefParam: 'deal.company.id',
+                label: 'cm_team',
+            },
+        },
+        {
+            label: 'vip',
+            field: 'vip',
+            id: 7,
+            visible: true,
+            render: {
+                type: 'link',
+                href: '/companies/',
+                hrefParam: 'deal.company.id',
+                label: 'vip',
             },
         },
 

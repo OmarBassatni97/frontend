@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import ResizableTableCell from './ResizableTableCell';
+import calculateSize from 'calculate-size'
 
 export function SortableItem({ item }) {
+    const [minWidth, setMinWidth] = useState()
     const {
         attributes,
         listeners,
@@ -15,7 +18,13 @@ export function SortableItem({ item }) {
         transform: CSS.Transform.toString(transform),
         transition,
     };
-
+    useEffect(() => {
+        const { width } = calculateSize(item.label, {
+            font: 'Neutra Display',
+            fontSize: '14px',
+        })
+        setMinWidth(`${width + 80}px`)
+    }, [])
     return (
         <th className='uppercase border border-gray-100 p-2 bg-[#C0E3E5] cursor-grab ' ref={setNodeRef} style={style}>
             <button
@@ -36,7 +45,9 @@ export function SortableItem({ item }) {
                     <circle cx="5" cy="9" r="1" fill="#322625" />
                 </svg>
             </button>
-            {item.label}
+            <ResizableTableCell id={item.id} minWidth={minWidth}>
+                {item.label}
+            </ResizableTableCell>
 
         </th>
     );
