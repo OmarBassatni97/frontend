@@ -1,38 +1,21 @@
 import { Resizable } from 're-resizable'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { TabsStore } from '@/data'
+import { setWith } from 'lodash'
 
 const ResizableTableCell = ({ children, id, minWidth }) => {
-    const {columns,setColumns} = useContext(TabsStore)
+    const { columns, setColumns } = useContext(TabsStore)
+    const [width, setWidth] = useState(200)
     return (
         <Resizable
             className="resizable-tabel-cell"
-            size={{
-                width: columns.filter(column => column.id === id)[0]
-                    .width,
-            }}
+            size={{ width: width }}
             style={{
                 overflow: 'hidden',
             }}
             minWidth={minWidth}
             onResizeStop={(e, direction, ref, d) => {
-                setColumns(
-                   columns.map(obj => {
-                        if (obj.id === id) {
-                            return {
-                                ...obj,
-                                width: columns.filter(
-                                    column => column.id === id,
-                                )[0].width
-                                    ? columns.filter(
-                                          column => column.id === id,
-                                      )[0].width + d.width
-                                    : d.width,
-                            }
-                        }
-                        return obj
-                    }),
-                )
+                setWidth(width + d.width)
             }}
             enable={{
                 top: false,
