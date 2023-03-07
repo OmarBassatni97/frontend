@@ -4,6 +4,16 @@ export const TabsStore = createContext(null)
 
 export const TabsProvider = props => {
     const [sortBy, setSortBy] = useState({ col: '', by: 0 })
+    const [gender, setGender] = useState([
+        { value: 'male', label: 'Male' },
+        { value: 'female', label: 'Female' }
+    ])
+    const [companies, setCompanies] = useState([
+        { value: 'company1', label: 'Company1' },
+        { value: 'company2', label: 'Company2' },
+        { value: 'company3', label: 'Company3' },
+        { value: 'company4', label: 'Company4' }
+    ])
     const [items, setItems] = useState([
         {
             id: 1,
@@ -151,7 +161,7 @@ export const TabsProvider = props => {
 
 
     return (
-        <TabsStore.Provider value={{ items, setItems, columns, setColumns, sortBy, setSortBy }}>{props.children}</TabsStore.Provider>
+        <TabsStore.Provider value={{ items, setItems, columns, setColumns, sortBy, setSortBy, gender, setGender, companies, setCompanies }}>{props.children}</TabsStore.Provider>
     )
 }
 
