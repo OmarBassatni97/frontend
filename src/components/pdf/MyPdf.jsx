@@ -8,8 +8,8 @@ import dayjs from 'dayjs'
 import PageLayout from './PageLayout'
 const styles = StyleSheet.create({
     viewer: {
-        width: window.innerWidth, //the pdf viewer will take up all of the width and height
-        height: window.innerHeight,
+        width: '100vw', //the pdf viewer will take up all of the width and height
+        height: '100vh',
     },
 
     quotationDescription: {
