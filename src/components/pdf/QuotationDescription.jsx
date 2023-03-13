@@ -1,5 +1,10 @@
 import React from 'react'
-import { View, Text, StyleSheet } from '@react-pdf/renderer'
+import { View, Text, StyleSheet, Font } from '@react-pdf/renderer'
+import NuetraTextBook from '../../fonts/NeutraTextBook.ttf'
+import NuetraTextBold from '../../fonts/Neutra Text Bold.ttf'
+
+Font.register({ family: 'NeutraTextBook', format: 'truetype', src: NuetraTextBook })
+Font.register({ family: 'NeutraTextBold', format: 'truetype', src: NuetraTextBold })
 const styles = StyleSheet.create({
   view: {
     display: 'flex',
@@ -10,12 +15,14 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: '12px',
+    fontFamily: 'NeutraTextBold'
 
   },
   desc: {
     fontSize: '10px',
     fontWeight: 200,
-    opacity: '0.8'
+    opacity: '0.8',
+    fontFamily: 'NeutraTextBook'
 
   }
 

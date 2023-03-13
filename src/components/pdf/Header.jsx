@@ -19,11 +19,11 @@ const styles = StyleSheet.create({
 	},
 	title: {
 		flex: '1',
-		// width: '32%',
+		
 	},
 	star: {
 		marginLeft: '0.5cm',
-		// width: '52%',
+		
 	},
 	quotation: {
 		width: '48%',

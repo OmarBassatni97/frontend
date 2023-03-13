@@ -4,9 +4,11 @@ import QuotationDescription from './QuotationDescription'
 import { TabsStore } from '@/data'
 import dayjs from 'dayjs'
 import PageLayout from './PageLayout'
-import NuetraTextBook from '../../fonts/Neutra Text Book.ttf'
+import NuetraTextBook from '../../fonts/NeutraTextBook.ttf'
+import NuetraTextBold from '../../fonts/Neutra Text Bold.ttf'
 
-Font.register({ family: 'Neutra Text Book', src: NuetraTextBook })
+Font.register({ family: 'NeutraTextBook', format: 'truetype', src: NuetraTextBook })
+Font.register({ family: 'NeutraTextBold', format: 'truetype', src: NuetraTextBold })
 const styles = StyleSheet.create({
     viewer: {
         width: '100vw', //the pdf viewer will take up all of the width and height
@@ -32,7 +34,7 @@ const styles = StyleSheet.create({
     text: {
         fontSize: '12px',
         opacity: '0.8',
-        fontFamily: "Neutra Text Book"
+        fontFamily: 'NeutraTextBook'
 
     },
     mainService: {
@@ -46,7 +48,8 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
         padding: 10,
         paddingRight: 20,
-        gap: '15px'
+        gap: '15px',
+        alignItems: 'center'
     }
 
 
@@ -79,10 +82,10 @@ const MyPdf = () => {
 
                         <QuotationDescription title='Project Deliverables' desc={pdfData.quote?.creator?.projectDeliverables} />
                         <View style={styles.serviceView}>
-                            <Text style={{ width: '40%', paddingLeft: 5 }}>Description</Text>
-                            <Text style={{ width: '20%', textAlign: 'center' }}>Units</Text>
-                            <Text style={{ width: '20%', textAlign: 'center' }}>Unit Price</Text>
-                            <Text style={{ width: '20%', textAlign: 'center' }}>Amount</Text>
+                            <Text style={{ width: '40%', paddingLeft: 5, fontFamily: 'NeutraTextBold' }}>Description</Text>
+                            <Text style={{ width: '20%', textAlign: 'center', fontFamily: 'NeutraTextBold' }}>Units</Text>
+                            <Text style={{ width: '20%', textAlign: 'center', fontFamily: 'NeutraTextBold' }}>Unit Price</Text>
+                            <Text style={{ width: '20%', textAlign: 'center', fontFamily: 'NeutraTextBold' }}>Amount</Text>
                         </View>
                         <View style={styles.mainService}>
                             {services.slice(0, 5).map((service, index) => (
@@ -105,7 +108,7 @@ const MyPdf = () => {
                             {services.length < 5 &&
                                 <View style={styles.totalView}>
                                     <Text>TOTAL</Text>
-                                    <Text>{total}</Text>
+                                    <Text style={styles.text}>{total}</Text>
                                 </View>
                             }
 
@@ -116,10 +119,10 @@ const MyPdf = () => {
                     {services.length > 5 &&
                         <PageLayout>
                             <View style={styles.serviceView}>
-                                <Text style={{ width: '40%', paddingLeft: 5 }}>Description</Text>
-                                <Text style={{ width: '20%', textAlign: 'center' }}>Units</Text>
-                                <Text style={{ width: '20%', textAlign: 'center' }}>Unit Price</Text>
-                                <Text style={{ width: '20%', textAlign: 'center' }}>Amount</Text>
+                                <Text style={{ width: '40%', paddingLeft: 5, fontFamily: 'NeutraTextBold' }}>Description</Text>
+                                <Text style={{ width: '20%', textAlign: 'center', fontFamily: 'NeutraTextBold' }}>Units</Text>
+                                <Text style={{ width: '20%', textAlign: 'center', fontFamily: 'NeutraTextBold' }}>Unit Price</Text>
+                                <Text style={{ width: '20%', textAlign: 'center', fontFamily: 'NeutraTextBold' }}>Amount</Text>
                             </View>
                             <View style={styles.mainService}>
                                 {services.slice(5).map((service, index) => (
@@ -142,7 +145,7 @@ const MyPdf = () => {
                                 {services.length > 5 &&
                                     <View style={styles.totalView}>
                                         <Text>TOTAL</Text>
-                                        <Text>{total}</Text>
+                                        <Text style={styles.text}>{total}</Text>
                                     </View>
                                 }
 
