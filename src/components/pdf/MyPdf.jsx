@@ -52,23 +52,24 @@ const MyPdf = () => {
                         </View>
 
                         <QuotationDescription title='Project Deliverables' desc={pdfData.quote?.creator?.projectDeliverables} />
+                        <View style={styles.serviceView}>
+                            <Text style={{ width: '40%' }}>Name</Text>
+                            <Text style={{ width: '20%' }}>Units</Text>
+                            <Text style={{ width: '20%' }}>Price</Text>
+                            <Text style={{ width: '20%' }}>Total</Text>
+                        </View>
                         {services.slice(0, 5).map((service, index) => (
                             <View key={index} style={styles.serviceView}>
-                                <View style={styles.text}>
-                                    {index === 0 && <Text>Service</Text>}
-
+                                <View style={{width:'40%'}}>
                                     <Text style={{ paddingTop: 10 }}>{service.name}</Text>
                                 </View>
-                                <View style={styles.text}>
-                                    {index === 0 && <Text>Units</Text>}
+                                <View style={{width:'20%'}}>
                                     <Text style={{ paddingTop: 10 }}>{service.units}</Text>
                                 </View >
-                                <View style={styles.text}>
-                                    {index === 0 && <Text>Price</Text>}
+                                <View style={{width:'20%'}}>
                                     <Text style={{ paddingTop: 10 }}>${service.unitPrice}</Text>
                                 </View>
-                                <View style={styles.text}>
-                                    {index === 0 && <Text>Total</Text>}
+                                <View style={{width:'20%'}}>
                                     <Text style={{ paddingTop: 10 }}>${service.units * service.unitPrice}</Text>
                                 </View>
 
@@ -78,27 +79,29 @@ const MyPdf = () => {
                     </PageLayout>
                     {services.length > 5 &&
                         <PageLayout>
-                            {services.slice(5).map((service, index) => (
-                                <View key={index} style={styles.serviceView}>
-                                    <View style={styles.text}>
-                                        <Text >Service</Text>
-                                        <Text>{service.name}</Text>
-                                    </View>
-                                    <View style={styles.text}>
-                                        <Text >Units</Text>
-                                        <Text>{service.units}</Text>
-                                    </View >
-                                    <View style={styles.text}>
-                                        <Text >Unit Price</Text>
-                                        <Text>${service.unitPrice}</Text>
-                                    </View>
-                                    <View style={styles.text}>
-                                        <Text >Total</Text>
-                                        <Text>${service.units * service.unitPrice}</Text>
-                                    </View>
-
+                             <View style={styles.serviceView}>
+                            <Text style={{ width: '40%' }}>Name</Text>
+                            <Text style={{ width: '20%' }}>Units</Text>
+                            <Text style={{ width: '20%' }}>Price</Text>
+                            <Text style={{ width: '20%' }}>Total</Text>
+                        </View>
+                        {services.slice(5).map((service, index) => (
+                            <View key={index} style={styles.serviceView}>
+                                <View style={{width:'40%'}}>
+                                    <Text style={{ paddingTop: 10 }}>{service.name}</Text>
                                 </View>
-                            ))}
+                                <View style={{width:'20%'}}>
+                                    <Text style={{ paddingTop: 10 }}>{service.units}</Text>
+                                </View >
+                                <View style={{width:'20%'}}>
+                                    <Text style={{ paddingTop: 10 }}>${service.unitPrice}</Text>
+                                </View>
+                                <View style={{width:'20%'}}>
+                                    <Text style={{ paddingTop: 10 }}>${service.units * service.unitPrice}</Text>
+                                </View>
+
+                            </View>
+                        ))}
                         </PageLayout>
                     }
 
