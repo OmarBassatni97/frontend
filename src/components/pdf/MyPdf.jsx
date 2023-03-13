@@ -1,9 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Document, PDFViewer, View, StyleSheet, Text } from '@react-pdf/renderer'
+import { Document, PDFViewer, View, StyleSheet, Text, Font } from '@react-pdf/renderer'
 import QuotationDescription from './QuotationDescription'
 import { TabsStore } from '@/data'
 import dayjs from 'dayjs'
 import PageLayout from './PageLayout'
+import NuetraTextBook from '../../fonts/Neutra Text Book.ttf'
+
+Font.register({ family: 'Neutra Text Book', src: NuetraTextBook })
 const styles = StyleSheet.create({
     viewer: {
         width: '100vw', //the pdf viewer will take up all of the width and height
@@ -28,7 +31,8 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: '12px',
-        opacity: '0.8'
+        opacity: '0.8',
+        fontFamily: "Neutra Text Book"
 
     },
     mainService: {
