@@ -1,7 +1,5 @@
 import React, { useContext } from 'react'
-import { Document, PDFViewer, View, Page, StyleSheet, Text } from '@react-pdf/renderer'
-import Footer from './Footer'
-import Header from './Header'
+import { Document, PDFViewer, View, StyleSheet, Text } from '@react-pdf/renderer'
 import QuotationDescription from './QuotationDescription'
 import { TabsStore } from '@/data'
 import dayjs from 'dayjs'
@@ -28,13 +26,15 @@ const styles = StyleSheet.create({
     },
     text: {
         textAlign: 'center',
-        margin: 10
+        margin: 5,
+        fontSize: '12px'
+
     }
 
 })
 
 const MyPdf = () => {
-    const { pdfData } = useContext(TabsStore)
+    const { pdfData, services } = useContext(TabsStore)
     console.log(pdfData.quote);
 
     return (
@@ -52,30 +52,59 @@ const MyPdf = () => {
                         </View>
 
                         <QuotationDescription title='Project Deliverables' desc={pdfData.quote?.creator?.projectDeliverables} />
-                        <View style={styles.serviceView}>
-                            <View style={styles.text}>
-                                <Text>Service</Text>
-                                <Text>{pdfData.quote.service.name}</Text>
-                            </View>
-                            <View style={styles.text}>
-                                <Text>Units</Text>
-                                <Text>{pdfData.quote.service.units}</Text>
-                            </View >
-                            <View style={styles.text}>
-                                <Text>Unit Price</Text>
-                                <Text>${pdfData.quote.service.unitPrice}</Text>
-                            </View>
-                            <View style={styles.text}>
-                                <Text>Total</Text>
-                                <Text>${pdfData.quote.service.units * pdfData.quote.service.unitPrice}</Text>
-                            </View>
+                        {services.slice(0, 5).map((service, index) => (
+                            <View key={index} style={styles.serviceView}>
+                                <View style={styles.text}>
+                                    {index === 0 && <Text>Service</Text>}
 
-                        </View>
+                                    <Text style={{ paddingTop: 10 }}>{service.name}</Text>
+                                </View>
+                                <View style={styles.text}>
+                                    {index === 0 && <Text>Units</Text>}
+                                    <Text style={{ paddingTop: 10 }}>{service.units}</Text>
+                                </View >
+                                <View style={styles.text}>
+                                    {index === 0 && <Text>Price</Text>}
+                                    <Text style={{ paddingTop: 10 }}>${service.unitPrice}</Text>
+                                </View>
+                                <View style={styles.text}>
+                                    {index === 0 && <Text>Total</Text>}
+                                    <Text style={{ paddingTop: 10 }}>${service.units * service.unitPrice}</Text>
+                                </View>
+
+                            </View>
+                        ))}
+
                     </PageLayout>
+                    {services.length > 5 &&
+                        <PageLayout>
+                            {services.slice(5).map((service, index) => (
+                                <View key={index} style={styles.serviceView}>
+                                    <View style={styles.text}>
+                                        <Text >Service</Text>
+                                        <Text>{service.name}</Text>
+                                    </View>
+                                    <View style={styles.text}>
+                                        <Text >Units</Text>
+                                        <Text>{service.units}</Text>
+                                    </View >
+                                    <View style={styles.text}>
+                                        <Text >Unit Price</Text>
+                                        <Text>${service.unitPrice}</Text>
+                                    </View>
+                                    <View style={styles.text}>
+                                        <Text >Total</Text>
+                                        <Text>${service.units * service.unitPrice}</Text>
+                                    </View>
 
+                                </View>
+                            ))}
+                        </PageLayout>
+                    }
 
 
                 </Document>
+
             </PDFViewer>
         </div>
     )

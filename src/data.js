@@ -4,7 +4,21 @@ export const TabsStore = createContext(null)
 
 export const TabsProvider = props => {
     const [sortBy, setSortBy] = useState({ col: '', by: 0 })
-    const [services, setServices] = useState([])
+    const [services, setServices] = useState(
+        [
+            { name: 'Service1', units: '3', unitPrice: '12' },
+            { name: 'Service2', units: '3', unitPrice: '12' },
+            { name: 'Service3', units: '3', unitPrice: '12' },
+            { name: 'Service4', units: '3', unitPrice: '12' },
+            { name: 'Service5', units: '3', unitPrice: '12' },
+            { name: 'Service6', units: '3', unitPrice: '12' },
+            { name: 'Service7', units: '3', unitPrice: '12' },
+            { name: 'Service8', units: '3', unitPrice: '12' },
+            { name: 'Service9', units: '3', unitPrice: '12' },
+            { name: 'Service10', units: '3', unitPrice: '12' },
+            
+
+        ])
     const [gender, setGender] = useState([
         { value: 'male', label: 'Male' },
         { value: 'female', label: 'Female' }
