@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Document, PDFViewer, View, StyleSheet, Text } from '@react-pdf/renderer'
 import QuotationDescription from './QuotationDescription'
 import { TabsStore } from '@/data'
@@ -21,22 +21,44 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         gap: '5px',
-        margin: 10,
+        paddingBottom: 10,
+        paddingTop: 10,
+        borderBottom: '1px'
 
     },
     text: {
-        textAlign: 'center',
-        margin: 5,
-        fontSize: '12px'
+        fontSize: '12px',
+        opacity: '0.8'
 
+    },
+    mainService: {
+        backgroundColor: 'white',
+        borderBottom: '2px solid black',
+        borderTop: '2px solid black',
+    },
+    totalView: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        padding: 10,
+        paddingRight: 20,
+        gap: '15px'
     }
+
 
 })
 
 const MyPdf = () => {
     const { pdfData, services } = useContext(TabsStore)
     console.log(pdfData.quote);
+    const [total, setTotal] = useState(0)
+    useEffect(() => {
 
+        services.map(service => {
+            let servicePrice = service.units * service.unitPrice
+            setTotal(total => total += servicePrice)
+        })
+    }, [services])
     return (
         <div>
             <PDFViewer style={styles.viewer}>
@@ -53,55 +75,74 @@ const MyPdf = () => {
 
                         <QuotationDescription title='Project Deliverables' desc={pdfData.quote?.creator?.projectDeliverables} />
                         <View style={styles.serviceView}>
-                            <Text style={{ width: '40%' }}>Name</Text>
-                            <Text style={{ width: '20%' }}>Units</Text>
-                            <Text style={{ width: '20%' }}>Price</Text>
-                            <Text style={{ width: '20%' }}>Total</Text>
+                            <Text style={{ width: '40%', paddingLeft: 5 }}>Description</Text>
+                            <Text style={{ width: '20%', textAlign: 'center' }}>Units</Text>
+                            <Text style={{ width: '20%', textAlign: 'center' }}>Unit Price</Text>
+                            <Text style={{ width: '20%', textAlign: 'center' }}>Amount</Text>
                         </View>
-                        {services.slice(0, 5).map((service, index) => (
-                            <View key={index} style={styles.serviceView}>
-                                <View style={{width:'40%'}}>
-                                    <Text style={{ paddingTop: 10 }}>{service.name}</Text>
-                                </View>
-                                <View style={{width:'20%'}}>
-                                    <Text style={{ paddingTop: 10 }}>{service.units}</Text>
-                                </View >
-                                <View style={{width:'20%'}}>
-                                    <Text style={{ paddingTop: 10 }}>${service.unitPrice}</Text>
-                                </View>
-                                <View style={{width:'20%'}}>
-                                    <Text style={{ paddingTop: 10 }}>${service.units * service.unitPrice}</Text>
-                                </View>
+                        <View style={styles.mainService}>
+                            {services.slice(0, 5).map((service, index) => (
+                                <View key={index} style={styles.serviceView}>
+                                    <View style={{ width: '40%', paddingLeft: 5 }}>
+                                        <Text style={styles.text}>{service.name}</Text>
+                                    </View>
+                                    <View style={{ width: '20%', textAlign: 'center' }}>
+                                        <Text style={styles.text}>{service.units}</Text>
+                                    </View >
+                                    <View style={{ width: '20%', textAlign: 'center' }}>
+                                        <Text style={styles.text}>${service.unitPrice}</Text>
+                                    </View>
+                                    <View style={{ width: '20%', textAlign: 'center' }}>
+                                        <Text style={styles.text}>${service.units * service.unitPrice}</Text>
+                                    </View>
 
-                            </View>
-                        ))}
+                                </View>
+                            ))}
+                            {services.length < 5 &&
+                                <View style={styles.totalView}>
+                                    <Text>TOTAL</Text>
+                                    <Text>{total}</Text>
+                                </View>
+                            }
+
+                        </View>
+
 
                     </PageLayout>
                     {services.length > 5 &&
                         <PageLayout>
-                             <View style={styles.serviceView}>
-                            <Text style={{ width: '40%' }}>Name</Text>
-                            <Text style={{ width: '20%' }}>Units</Text>
-                            <Text style={{ width: '20%' }}>Price</Text>
-                            <Text style={{ width: '20%' }}>Total</Text>
-                        </View>
-                        {services.slice(5).map((service, index) => (
-                            <View key={index} style={styles.serviceView}>
-                                <View style={{width:'40%'}}>
-                                    <Text style={{ paddingTop: 10 }}>{service.name}</Text>
-                                </View>
-                                <View style={{width:'20%'}}>
-                                    <Text style={{ paddingTop: 10 }}>{service.units}</Text>
-                                </View >
-                                <View style={{width:'20%'}}>
-                                    <Text style={{ paddingTop: 10 }}>${service.unitPrice}</Text>
-                                </View>
-                                <View style={{width:'20%'}}>
-                                    <Text style={{ paddingTop: 10 }}>${service.units * service.unitPrice}</Text>
-                                </View>
+                            <View style={styles.serviceView}>
+                                <Text style={{ width: '40%', paddingLeft: 5 }}>Description</Text>
+                                <Text style={{ width: '20%', textAlign: 'center' }}>Units</Text>
+                                <Text style={{ width: '20%', textAlign: 'center' }}>Unit Price</Text>
+                                <Text style={{ width: '20%', textAlign: 'center' }}>Amount</Text>
+                            </View>
+                            <View style={styles.mainService}>
+                                {services.slice(5).map((service, index) => (
+                                    <View key={index} style={styles.serviceView}>
+                                        <View style={{ width: '40%', paddingLeft: 5 }}>
+                                            <Text style={styles.text}>{service.name}</Text>
+                                        </View>
+                                        <View style={{ width: '20%', textAlign: 'center' }}>
+                                            <Text style={styles.text}>{service.units}</Text>
+                                        </View >
+                                        <View style={{ width: '20%', textAlign: 'center' }}>
+                                            <Text style={styles.text}>${service.unitPrice}</Text>
+                                        </View>
+                                        <View style={{ width: '20%', textAlign: 'center' }}>
+                                            <Text style={styles.text}>${service.units * service.unitPrice}</Text>
+                                        </View>
+
+                                    </View>
+                                ))}
+                                {services.length > 5 &&
+                                    <View style={styles.totalView}>
+                                        <Text>TOTAL</Text>
+                                        <Text>{total}</Text>
+                                    </View>
+                                }
 
                             </View>
-                        ))}
                         </PageLayout>
                     }
 
